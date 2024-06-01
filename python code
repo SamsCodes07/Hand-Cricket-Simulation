@@ -1,0 +1,75 @@
+import random
+
+input("Do you want to play hand cricket: <press any key> ")
+n=input(" Enter team name:  ")
+m=input(" Enter opponent team name:  ")
+
+diff = input('''Choose the difficulty level:
+            EASY   <press 1>
+            MEDIUM <press 2>
+            HARD   <press 3>
+            PRO    <press 4>: ''')
+
+if diff == '1':
+    computer_score = random.randint(10, 30)
+elif diff == '2':
+    computer_score = random.randint(30, 50)
+elif diff == '3':
+    computer_score = random.randint(50, 80)
+elif diff == '4':
+    computer_score = random.randint(80, 150)
+else:
+    print("Invalid choice! Please select a valid difficulty level.")
+
+
+options = ["H", "T"]
+user_input=input(" Choose heads(H) or tails(T): (type H or T) ")
+while True:
+    if user_input not in options:
+        continue
+
+    random_number = random.randint(0, 1)
+    # head: 0, tail: 1
+    computer_pick = options[random_number]
+    print("Computer picked", computer_pick + ".")
+
+    if user_input == computer_pick :
+        print(" Opponent chose to Ball. start BATTING: ")
+
+    else :
+        print("Opponent chose to Ball. start BATTING: ")
+    break
+
+#actual game start---------------------------------------------
+
+
+def play_hand_cricket():
+    user_score = 0
+
+    while True:
+        user_input = int(input("Enter your choice (1 to 6): "))
+        computer_input = random.randint(1, 6)
+
+        print(f"You chose {user_input} and computer chose {computer_input}")
+
+        if user_input == computer_input:
+            print("Out!")
+            break
+        elif user_input not in [1,2,3,4,5,6]:
+            print("Invalid input! The VAR rules you Out!")
+            break
+        else:
+            user_score += user_input
+
+    print(n,f": {user_score}")
+    print(m,f": {computer_score}")
+
+    if user_score > computer_score:
+        print("Congratulations! You win!")
+    elif user_score < computer_score:
+        print(m," wins. Better luck next time!")
+    else:
+        print("It's a tie!")
+
+if __name__ == "__main__":
+    play_hand_cricket()
